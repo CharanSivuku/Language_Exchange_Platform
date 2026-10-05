@@ -9,6 +9,19 @@
 </p>
 
 <p align="center">
+  <a href="https://verba-eeyc.onrender.com/" target="_blank">
+    <img src="https://img.shields.io/badge/🚀_Live_Demo-verba--eeyc.onrender.com-6D5DFB?style=for-the-badge&logo=render&logoColor=white" alt="Live Demo" />
+  </a>
+  <a href="https://verba-eeyc.onrender.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Status-Online_%26_Deployed-22C55E?style=for-the-badge" alt="Status" />
+  </a>
+</p>
+
+<p align="center">
+  🌐 <strong>Live Application:</strong> <a href="https://verba-eeyc.onrender.com/" target="_blank"><strong>https://verba-eeyc.onrender.com/</strong></a>
+</p>
+
+<p align="center">
   <a href="#-key-features"><img src="https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" /></a>
   <a href="#-key-features"><img src="https://img.shields.io/badge/Vite-6.3-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" /></a>
   <a href="#-key-features"><img src="https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
@@ -29,6 +42,17 @@
 By pairing native speakers across the globe for structured 1-on-1 video calls, real-time chats, and icebreaker-driven conversations, Verba recreates natural immersion anywhere, anytime.
 
 Designed with an aesthetic inspired by **Linear, Raycast, and modern design systems**, Verba combines minimal visual clutter with fluid micro-interactions, robust state management, and real-time WebRTC communications.
+
+---
+
+## 🚀 Live Deployment
+
+The platform is deployed live and fully functional on Render with real-time WebSockets, WebRTC video calling, Stream Chat, and MongoDB Atlas:
+
+- 🔗 **Live Website:** [https://verba-eeyc.onrender.com/](https://verba-eeyc.onrender.com/)
+- ⚡ **Hosting Platform:** Render Web Services (Node.js + React SPA)
+- 🔒 **Security:** Full SSL/TLS encryption with secure `httpOnly` JWT cookies and secure WebSocket (WSS) protocol
+- 🗄️ **Database:** MongoDB Atlas Cloud Database
 
 ---
 
