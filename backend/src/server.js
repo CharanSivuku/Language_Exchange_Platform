@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import path from "path";
 import fs from "fs";
+import https from "https";
 
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
@@ -47,6 +48,16 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+// Lightweight health check endpoint for monitoring & keep-alive pings
+app.get("/api/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    message: "Verba API is healthy and active",
+    timestamp: Date.now(),
+    uptime: Math.floor(process.uptime()),
+  });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
@@ -81,4 +92,25 @@ setupMatchmaking(io);
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
+
+  // Keep-alive auto-ping to prevent Render free tier from sleeping after 15 mins
+  const RENDER_EXTERNAL_URL =
+    process.env.RENDER_EXTERNAL_URL || "https://verba-eeyc.onrender.com";
+
+  if (process.env.NODE_ENV === "production") {
+    console.log(`[Keep-Alive] Initialized self-pinging for: ${RENDER_EXTERNAL_URL}/api/health`);
+    setInterval(() => {
+      try {
+        https
+          .get(`${RENDER_EXTERNAL_URL}/api/health`, (res) => {
+            console.log(`[Keep-Alive] Pinged health endpoint: HTTP ${res.statusCode}`);
+          })
+          .on("error", (err) => {
+            console.log("[Keep-Alive] Ping warning:", err.message);
+          });
+      } catch (e) {
+        console.log("[Keep-Alive] Ping error:", e.message);
+      }
+    }, 13 * 60 * 1000); // Ping every 13 minutes (Render timeout is 15 minutes)
+  }
 });

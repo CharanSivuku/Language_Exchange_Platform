@@ -12,9 +12,36 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"
       rel="stylesheet"
     />
+    <style>
+      @keyframes verba-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.06); opacity: 1; filter: drop-shadow(0 0 16px rgba(109, 93, 251, 0.45)); }
+      }
+      @keyframes verba-bar {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(250%); }
+      }
+    </style>
   </head>
   <body class="bg-base-100 text-base-content font-sans antialiased selection:bg-primary/30 selection:text-primary-content">
-    <div id="root"></div>
+    <div id="root">
+      <!-- Instant pre-React loading screen while bundle is downloaded and server responds -->
+      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #0c0c0e; color: #f4f4f5; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-align: center; padding: 1.5rem; box-sizing: border-box;">
+        <div style="margin-bottom: 1.5rem; animation: verba-pulse 2.2s infinite ease-in-out;">
+          <img src="/verba-logo.svg" width="68" height="68" alt="Verba" style="display: block;" />
+        </div>
+        <h1 style="font-size: 1.5rem; font-weight: 800; margin: 0 0 0.5rem 0; letter-spacing: -0.02em; color: #ffffff;">Verba</h1>
+        <p style="font-size: 0.875rem; color: #a1a1aa; margin: 0 0 1.5rem 0; max-width: 320px;">
+          Connecting to language network & server...
+        </p>
+        <div style="width: 200px; height: 4px; background: rgba(255, 255, 255, 0.1); border-radius: 999px; overflow: hidden; position: relative;">
+          <div style="position: absolute; top: 0; left: 0; bottom: 0; width: 45%; background: linear-gradient(90deg, #6d5dfb, #a59bfb); border-radius: 999px; animation: verba-bar 1.4s infinite cubic-bezier(0.65, 0, 0.35, 1);"></div>
+        </div>
+        <p style="font-size: 0.75rem; color: #71717a; margin-top: 1.25rem; max-width: 300px; line-height: 1.45;">
+          Free tier instances take ~30–45s to wake from sleep. Thank you for your patience!
+        </p>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
