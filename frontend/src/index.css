@@ -273,3 +273,15 @@ body {
 .str-chat__header-livestream {
   display: none !important;
 }
+
+/* Stream Video Call Full Viewport */
+.str-video {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: inherit !important;
+}
+
+.str-video__speaker-layout {
+  width: 100% !important;
+  height: 100% !important;
+}

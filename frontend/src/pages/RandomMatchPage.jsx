@@ -31,7 +31,8 @@ import {
 } from "lucide-react";
 import toast from "react-hot-toast";
 
-const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY;
+const FALLBACK_STREAM_KEY = "eqzs86utatrh";
+const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY || FALLBACK_STREAM_KEY;
 
 const RandomMatchPage = () => {
   usePageTitle("Find a Partner — Instant Conversation Lounge");
@@ -153,18 +154,33 @@ const RandomMatchPage = () => {
       try {
         setIsCallConnecting(true);
 
+        const apiKey = tokenData.apiKey || STREAM_API_KEY || FALLBACK_STREAM_KEY;
+
         const client = new StreamVideoClient({
-          apiKey: STREAM_API_KEY,
+          apiKey,
           user: {
-            id: authUser._id,
+            id: authUser._id.toString(),
             name: authUser.fullName,
-            image: authUser.profilePic,
+            image: authUser.profilePic || "",
           },
           token: tokenData.token,
         });
 
         const call = client.call("default", matchData.roomId);
         await call.join({ create: true });
+
+        // Explicitly enable camera and microphone so partner sees video stream
+        try {
+          await call.camera.enable();
+        } catch (camErr) {
+          console.warn("Could not enable camera:", camErr);
+        }
+
+        try {
+          await call.microphone.enable();
+        } catch (micErr) {
+          console.warn("Could not enable microphone:", micErr);
+        }
 
         callInstanceRef.current = call;
         videoClientRef.current = client;

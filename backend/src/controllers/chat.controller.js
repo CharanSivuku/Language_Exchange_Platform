@@ -12,8 +12,9 @@ export async function getStreamToken(req, res) {
     }
 
     const token = generateStreamToken(req.user.id);
+    const apiKey = process.env.STREAM_API_KEY || process.env.STEAM_API_KEY || "eqzs86utatrh";
 
-    res.status(200).json({ token });
+    res.status(200).json({ token, apiKey });
   } catch (error) {
     console.log("Error in getStreamToken controller:", error.message);
     res.status(500).json({ message: "Internal Server Error" });
@@ -46,12 +47,14 @@ export async function prepareChat(req, res) {
 
     // 3. Generate token for authUser
     const token = generateStreamToken(authUser._id);
+    const apiKey = process.env.STREAM_API_KEY || process.env.STEAM_API_KEY || "eqzs86utatrh";
 
     // 4. Clean channelId format
     const channelId = [authUser._id.toString(), targetUser._id.toString()].sort().join("-");
 
     res.status(200).json({
       token,
+      apiKey,
       channelId,
       targetUser: {
         _id: targetUser._id,

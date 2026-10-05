@@ -139,7 +139,8 @@ const ChatPage = () => {
         text: `📹 I've started a video call. Join me here: ${callUrl}`,
       });
 
-      toast.success("Video call invitation sent in chat!", { icon: "📹" });
+      toast.success("Starting video call...", { icon: "📹" });
+      navigate(`/call/${channel.id}`);
     }
   };
 
