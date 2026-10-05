@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+  <defs>
+    <linearGradient id="verbaGrad" x1="4" y1="4" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6D5DFB" />
+      <stop offset="0.5" stop-color="#8B5CF6" />
+      <stop offset="1" stop-color="#38BDF8" />
+    </linearGradient>
+  </defs>
+  <!-- Background Container -->
+  <rect width="40" height="40" rx="10" fill="#111113" stroke="#27272A" stroke-width="1.5" />
+  <!-- Overlapping Speech Loops Forming a 'V' -->
+  <path d="M12 14C12 11.7909 13.7909 10 16 10H20C22.2091 10 24 11.7909 24 14V17C24 19.2091 22.2091 21 20 21H16L12 24V14Z" fill="url(#verbaGrad)" fill-opacity="0.25" stroke="url(#verbaGrad)" stroke-width="1.8" stroke-linejoin="round" />
+  <path d="M18 19C18 16.7909 19.7909 15 22 15H26C28.2091 15 30 16.7909 30 19V22C30 24.2091 28.2091 26 26 26H24L20 29V26C18.8954 26 18 25.1046 18 24V19Z" fill="url(#verbaGrad)" stroke="#FAFAFA" stroke-width="1.8" stroke-linejoin="round" />
+  <!-- Live Presence Indicator Node -->
+  <circle cx="28" cy="12" r="2.5" fill="#22C55E" />
+</svg>
